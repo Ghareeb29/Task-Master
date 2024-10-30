@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'User.apps.UserConfig',
     'tasks.apps.TasksConfig',
-
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -139,6 +139,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 SIMPLE_JWT = {
@@ -149,3 +150,21 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React development server
 ]
+
+# SPECTACULAR SETTINGS for API documentation
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Task Master API',
+    'DESCRIPTION': 'API for managing projects, tasks, and user collaboration',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
+    'TAGS': [
+        {'name': 'auth', 'description': 'Authentication endpoints'},
+        {'name': 'projects', 'description': 'Project management'},
+        {'name': 'tasks', 'description': 'Task operations'},
+        {'name': 'comments', 'description': 'Task comments'},
+    ],
+}

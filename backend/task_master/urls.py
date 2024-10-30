@@ -18,14 +18,28 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from User.views import RegisterView, UserProfileView
 
+# Importing drf-spectacular views for API documentation
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', RegisterView.as_view(), name='auth_register'),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('profile/', UserProfileView.as_view(), name='user_profile'),
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('api/', include('tasks.urls')),
    
+=======
+    
+    # Adding API documentation routes using drf-spectacular
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # Raw OpenAPI schema
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Swagger UI interface
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  # ReDoc interface
+
+    
+>>>>>>> 184c1c6 (Add API documentation using drf-spectacular)
 ]
