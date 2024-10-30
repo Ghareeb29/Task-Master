@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Project, Task, Comment
@@ -64,4 +62,3 @@ class ProjectSerializer(serializers.ModelSerializer):
                 }
             }
         }
->>>>>>> 184c1c6 (Add API documentation using drf-spectacular)
