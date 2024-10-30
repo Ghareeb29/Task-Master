@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './loginRegister.css';
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { Navigate } from 'react-router-dom';
 
 
 const LoginRegister = () => {
@@ -15,11 +16,21 @@ const LoginRegister = () => {
         setAction('');
     };
 
+    const [redirect, setRedirect] = useState(false);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setRedirect(true); // Trigger navigation
+    };
+
+    if (redirect) {
+        return <Navigate to="/dash" replace />;
+    }
 
     return (
         <div className={`wrapper${action}`}>
             <div className='form-box login'>
-                <form action=''>
+                <form action='' onSubmit={handleSubmit}>
                     <h1>login</h1>
                     <div className='input-box'>
                         <input type='text' placeholder='Username' required />
@@ -44,7 +55,7 @@ const LoginRegister = () => {
             </div>
 
             <div className='form-box register'>
-                <form action=''>
+                <form action='' onSubmit={handleSubmit}>
                     <h1>Register</h1>
                     <div className='input-box'>
                         <input type='text' placeholder='Username' required />
