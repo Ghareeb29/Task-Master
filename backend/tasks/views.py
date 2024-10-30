@@ -89,3 +89,30 @@ class TaskViewSet(viewsets.ModelViewSet):
             models.Q(assigned_to=user) |
             models.Q(project__created_by=user)
         ).distinct()
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['task']
+    ordering_fields = ['created_at']
+
+    def get_queryset(self):
+        user = self.request.user
+        return Comment.objects.filter(
+            models.Q(task__created_by=user) |
+            models.Q(task__assigned_to=user) |
+            models.Q(task__project__created_by=user)
+        ).distinct()
+
+class SimpleProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+class SimpleTaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+class SimpleCommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer

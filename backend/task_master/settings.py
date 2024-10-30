@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'tasks.apps.TasksConfig',
     'drf_spectacular',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
