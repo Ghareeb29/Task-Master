@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'User.apps.UserConfig',
     'tasks.apps.TasksConfig',
-    'drf_spectacular',
     'django_extensions',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -154,18 +154,8 @@ CORS_ALLOWED_ORIGINS = [
 
 # SPECTACULAR SETTINGS for API documentation
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Task Master API',
-    'DESCRIPTION': 'API for managing projects, tasks, and user collaboration',
+    'TITLE': 'Your API Title',
+    'DESCRIPTION': 'Your API Description',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
-    'COMPONENT_SPLIT_REQUEST': True,
-    'SWAGGER_UI_SETTINGS': {
-        'persistAuthorization': True,
-    },
-    'TAGS': [
-        {'name': 'auth', 'description': 'Authentication endpoints'},
-        {'name': 'projects', 'description': 'Project management'},
-        {'name': 'tasks', 'description': 'Task operations'},
-        {'name': 'comments', 'description': 'Task comments'},
-    ],
 }
