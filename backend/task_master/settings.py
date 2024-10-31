@@ -54,8 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    # other middleware...
+    'django.middleware.common.CommonMiddleware',
 ]
-
 ROOT_URLCONF = 'task_master.urls'
 
 TEMPLATES = [
