@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'User.apps.UserConfig',
     'tasks.apps.TasksConfig',
-
+    'django_extensions',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -139,6 +140,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 SIMPLE_JWT = {
@@ -149,3 +151,11 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React development server
 ]
+
+# SPECTACULAR SETTINGS for API documentation
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your API Title',
+    'DESCRIPTION': 'Your API Description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
