@@ -28,7 +28,7 @@ function Sidebar() {
         <>
             <div>
                 <h2 className='text-xl font-semibold'>Task-Master</h2>
-                <h4 className='mb-1 text-gray-400'>Good Morning!!</h4>
+                <h4 className='mb-1 text-gray-400'>Welcome back !!</h4>
                 <hr/>
             </div>
             <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from './sidebar';
 import { Outlet } from 'react-router-dom';
+import CurrentDate from './CurrentDate';
 
 function Dash() {
 
@@ -10,6 +11,7 @@ function Dash() {
                 <Sidebar/>
             </div>
             <div className='w-5/6 border rounded-xl p-4'>
+                <CurrentDate/>
                 <Outlet/>
             </div>
         </div>
