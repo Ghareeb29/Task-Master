@@ -17,7 +17,7 @@ function App() {
         <Route path="/dash" element={<Dash />}>
           <Route path="alltasks" element={<Alltasks />} />
           <Route path="importantTasks" element={<ImportantTasks />} />
-          <Route path="TaskList" element={<TaskList />} />
+          <Route path="tasklist" element={<TaskList />} />
         </Route>
       </Routes>
     </Router>
