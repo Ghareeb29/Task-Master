@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ImCross } from "react-icons/im";
 
-function InputData({ InputDiv, SetInputDiv, onSave }) {
-    const [title, setTitle] = useState(''); 
-    const [desc, setDesc] = useState(''); 
+function InputData({ InputDiv, SetInputDiv, onSave, task }) {
+    const [title, setTitle] = useState('');
+    const [desc, setDesc] = useState('');
 
-    
+    // Set initial values based on the task being edited
+    useEffect(() => {
+        if (task) {
+            setTitle(task.title);
+            setDesc(task.desc);
+        } else {
+            setTitle('');
+            setDesc('');
+        }
+    }, [task]);
+
     const handleSave = () => {
         if (title.trim() && desc.trim()) { 
-            onSave({ title, desc, status: 'Incomplete' }); 
+            onSave({ ...task, title, desc, status: task ? task.status : 'Incomplete' }); 
             setTitle(''); 
             setDesc('');  
             SetInputDiv("hidden"); 
@@ -27,7 +37,7 @@ function InputData({ InputDiv, SetInputDiv, onSave }) {
                             <ImCross />
                         </button>
                     </div>
-                    <h2 className='text-white text-lg font-semibold mb-4'>Add New Task</h2>
+                    <h2 className='text-white text-lg font-semibold mb-4'>{task ? "Edit Task" : "Add New Task"}</h2>
                     <input 
                         type='text' 
                         placeholder='Title' 
@@ -54,6 +64,6 @@ function InputData({ InputDiv, SetInputDiv, onSave }) {
             </div>
         </>
     );
-};
+}
 
 export default InputData;

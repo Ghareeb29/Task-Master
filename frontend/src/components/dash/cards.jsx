@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
-import InputData from './InputData'; 
+import InputData from './InputData';
 
 function Cards({ home, SetInputDiv }) {
     const [tasks, setTasks] = useState([]); 
     const [inputDiv, setInputDiv] = useState("hidden"); 
     const [editIndex, setEditIndex] = useState(null); 
 
-    const handleSaveTask = (task) => {
-        if (editIndex !== null) {
-            
-            const updatedTasks = tasks.map((t, index) => (index === editIndex ? task : t));
-            setTasks(updatedTasks);
-            setEditIndex(null); 
-        } else {
-            
-            setTasks([...tasks, task]); 
-        }
+    // Load tasks from localStorage on component mount
+    useEffect(() => {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        setTasks(storedTasks);
+    }, []);
+
+    // Update localStorage whenever tasks change
+    const updateLocalStorage = (updatedTasks) => {
+        setTasks(updatedTasks);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
-    
+    const handleSaveTask = (task) => {
+        if (editIndex !== null) {
+            // Edit existing task
+            const updatedTasks = tasks.map((t, index) => (index === editIndex ? task : t));
+            updateLocalStorage(updatedTasks);
+            setEditIndex(null);
+        } else {
+            // Add new task
+            const updatedTasks = [...tasks, task];
+            updateLocalStorage(updatedTasks);
+        }
+        setInputDiv("hidden");
+    };
+
     const handleEditTask = (index) => {
         setEditIndex(index);
         setInputDiv("flex"); 
     };
 
-    
     const handleDeleteTask = (index) => {
         const updatedTasks = tasks.filter((_, i) => i !== index);
-        setTasks(updatedTasks);
+        updateLocalStorage(updatedTasks);
     };
 
-    
     const handleToggleStatus = (index) => {
         const updatedTasks = tasks.map((t, i) => {
             if (i === index) {
@@ -41,7 +52,7 @@ function Cards({ home, SetInputDiv }) {
             }
             return t;
         });
-        setTasks(updatedTasks);
+        updateLocalStorage(updatedTasks);
     };
 
     return (
@@ -69,7 +80,6 @@ function Cards({ home, SetInputDiv }) {
                 ))}
             </div>
 
-            
             {home === "true" && (
                 <button 
                     className='bg-gray-800 rounded-sm p-4 flex flex-col justify-center items-center text-gray-200 hover:scale-105 hover:cursor-pointer transition-all duration-300' 
