@@ -9,13 +9,12 @@ function Cards({ home, SetInputDiv }) {
     const [inputDiv, setInputDiv] = useState("hidden"); 
     const [editIndex, setEditIndex] = useState(null); 
 
-    // Load tasks from localStorage on component mount
+
     useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
         setTasks(storedTasks);
     }, []);
 
-    // Update localStorage whenever tasks change
     const updateLocalStorage = (updatedTasks) => {
         setTasks(updatedTasks);
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
@@ -23,12 +22,10 @@ function Cards({ home, SetInputDiv }) {
 
     const handleSaveTask = (task) => {
         if (editIndex !== null) {
-            // Edit existing task
             const updatedTasks = tasks.map((t, index) => (index === editIndex ? task : t));
             updateLocalStorage(updatedTasks);
             setEditIndex(null);
         } else {
-            // Add new task
             const updatedTasks = [...tasks, task];
             updateLocalStorage(updatedTasks);
         }

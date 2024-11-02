@@ -5,7 +5,6 @@ function InputData({ InputDiv, SetInputDiv, onSave, task }) {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
 
-    // Set initial values based on the task being edited
     useEffect(() => {
         if (task) {
             setTitle(task.title);
