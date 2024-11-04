@@ -65,109 +65,19 @@ Note: These installation steps are general and may vary depending on your specif
 ```
 Task-Master
 ├── backend
-│   ├── db.sqlite3
-│   ├── manage.py
-│   ├── schema.yaml
-│   ├── task_master
-│   │   ├── asgi.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-310.pyc
-│   │   │   ├── settings.cpython-310.pyc
-│   │   │   ├── urls.cpython-310.pyc
-│   │   │   └── wsgi.cpython-310.pyc
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── tasks
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── __init__.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_alter_comment_user_alter_project_created_by_and_more.py
-│   │   │   ├── __init__.py
-│   │   │   └── __pycache__
-│   │   │       ├── 0001_initial.cpython-310.pyc
-│   │   │       ├── 0002_alter_comment_user_alter_project_created_by_and_more.cpython-310.pyc
-│   │   │       └── __init__.cpython-310.pyc
-│   │   ├── models.py
-│   │   ├── __pycache__
-│   │   │   ├── admin.cpython-310.pyc
-│   │   │   ├── apps.cpython-310.pyc
-│   │   │   ├── __init__.cpython-310.pyc
-│   │   │   ├── models.cpython-310.pyc
-│   │   │   ├── serializers.cpython-310.pyc
-│   │   │   ├── tests.cpython-310.pyc
-│   │   │   ├── tests.cpython-310-pytest-8.3.3.pyc
-│   │   │   ├── urls.cpython-310.pyc
-│   │   │   └── views.cpython-310.pyc
-│   │   ├── serializers.py
-│   │   ├── tests.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   └── User
-│       ├── admin.py
-│       ├── apps.py
-│       ├── __init__.py
-│       ├── migrations
-│       │   ├── 0001_initial.py
-│       │   ├── __init__.py
-│       │   └── __pycache__
-│       │       ├── 0001_initial.cpython-310.pyc
-│       │       └── __init__.cpython-310.pyc
-│       ├── models.py
-│       ├── __pycache__
-│       │   ├── admin.cpython-310.pyc
-│       │   ├── apps.cpython-310.pyc
-│       │   ├── __init__.cpython-310.pyc
-│       │   ├── models.cpython-310.pyc
-│       │   ├── serializers.cpython-310.pyc
-│       │   ├── tests.cpython-310.pyc
-│       │   ├── tests.cpython-310-pytest-8.3.3.pyc
-│       │   ├── urls.cpython-310.pyc
-│       │   └── views.cpython-310.pyc
-│       ├── serializers.py
-│       ├── tests.py
-│       ├── urls.py
-│       └── views.py
+│   ├── db.sqlite3
+│   ├── manage.py
+│   ├── schema.yaml
+│   ├── task_master
+│   ├── tasks
+│   └── User
 ├── frontend
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── public
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   ├── src
-│   │   ├── api
-│   │   │   └── axios.js
-│   │   ├── App.css
-│   │   ├── App.js
-│   │   ├── App.test.js
-│   │   ├── components
-│   │   │   ├── Assets
-│   │   │   │   └── background.jpg
-│   │   │   ├── dash
-│   │   │   │   ├── alltasks.jsx
-│   │   │   │   ├── cards.jsx
-│   │   │   │   ├── CurrentDate.jsx
-│   │   │   │   ├── dash.jsx
-│   │   │   │   ├── importantTasks.jsx
-│   │   │   │   ├── InputData.jsx
-│   │   │   │   ├── sidebar.jsx
-│   │   │   │   └── TaskList.jsx
-│   │   │   └── loginRegister
-│   │   │       ├── loginRegister.css
-│   │   │       └── loginRegister.jsx
-│   │   ├── index.css
-│   │   ├── index.js
-│   │   ├── logo.svg
-│   │   ├── reportWebVitals.js
-│   │   └── setupTests.js
-│   └── tailwind.config.js
+│   ├── node_modules
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   ├── src
+│   └── tailwind.config.js
 └── README.md
 ```
 
